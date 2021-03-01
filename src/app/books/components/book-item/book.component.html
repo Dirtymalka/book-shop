@@ -1,0 +1,15 @@
+<div class="book-image">
+</div>
+<div class="book-content">
+  <mat-card-title class="book-title">{{ book.name }}</mat-card-title>
+</div>
+<mat-card-content class="book-price">{{ book.price | currency}}</mat-card-content>
+<div class="book-actions">
+  <button
+    mat-raised-button color="accent"
+    [disabled]="!book.isAvailable"
+    (click)="onBuy()"
+  >
+    Buy
+  </button>
+</div>

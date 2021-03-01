@@ -1,0 +1,36 @@
+.container {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  color: black;
+}
+
+.books {
+  flex: 1;
+}
+
+.cart {
+  flex: 1;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  flex-basis: 1200px;
+  margin-top: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  min-height: 100%;
+  background-color: #c5c2c2;
+}
+
+
+.title {
+  font-size: xx-large;
+  color: black;
+}
+
+.sub-title {
+  margin-top: 10px;
+  font-size: large;
+}

@@ -1,0 +1,14 @@
+<ul class="cart-list">
+
+  <li *ngFor="let book of cart">
+
+      <app-cart-item [book]="book"
+                     (delete)="deleteBook($event)"
+                     (increase)="increaseCount($event)"
+                     (decrease)="decreaseCount($event)"
+
+      ></app-cart-item>
+  </li>
+
+</ul>
+

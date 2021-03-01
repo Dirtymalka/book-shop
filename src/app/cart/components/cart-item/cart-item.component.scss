@@ -1,0 +1,26 @@
+.book-count {
+  margin: 1rem;
+}
+
+.book-count {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.count {
+  width: 34px;
+  height: 34px;
+  text-align: center;
+  border-radius: 50%;
+  transition: transform 200ms ease-in-out;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  pointer-events: none;
+  color: #fff;
+  background: #c2185b;
+  font-weight: 600;
+  font-size: 31px;
+  margin: 0 .5rem;
+}

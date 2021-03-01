@@ -1,0 +1,42 @@
+<div class="cart">
+  <div class="cart-title_container">
+    <h2 class="cart_title">{{'Cart list' | titlecase}}</h2>
+    <div>
+      <span [matBadge]="totalQuantity | number" matBadgeOverlap="false">
+         <mat-icon>shopping_cart</mat-icon>
+      </span>
+    </div>
+  </div>
+
+  <div class="sort_container">
+    <mat-form-field appearance="fill">
+      <mat-label>Sort By</mat-label>
+      <mat-select [(value)]="selected">
+        <mat-option value="name">name</mat-option>
+        <mat-option value="price">price</mat-option>
+        <mat-option value="count">count</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <div>
+      <button (click)="trigger()" mat-mini-fab>
+        <mat-icon *ngIf="descending">expand_less</mat-icon>
+        <mat-icon *ngIf="!descending">expand_more</mat-icon>
+      </button>
+    </div>
+  </div>
+
+  <app-cart-list (delete)="deleteBook($event)"
+                 (increase)="increase($event)"
+                 (decrease)="decrease($event)"
+                 [cart]="cart"
+                 [selected]="selected"
+                 [descending]="descending"
+                 *ngIf="totalQuantity>0; else empty"></app-cart-list>
+</div>
+<ng-template #empty>
+  <div>Empty cart</div>
+</ng-template>
+<div class="total">
+  Total: {{totalPrice | currency}}
+</div>
+

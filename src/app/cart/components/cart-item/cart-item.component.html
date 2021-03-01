@@ -1,0 +1,20 @@
+<mat-card appBackground>
+  <div class="book-image">
+  </div>
+  <div class="book-content">
+    <span class="book-title">{{ book.name }}</span>
+  </div>
+  <span class="book-price">{{ book.price | currency}}</span>
+  <div class="book-count">
+    <button mat-mini-fab color="accent" (click)="removeBook()">
+      <mat-icon>remove</mat-icon>
+    </button>
+    <span class="count">{{book.count}}</span>
+    <button mat-mini-fab color="accent" (click)="addBook()">
+      <mat-icon>add</mat-icon>
+    </button>
+    <button mat-mini-fab color="primary" (click)="deleteBook()">
+      <mat-icon>delete</mat-icon>
+    </button>
+  </div>
+</mat-card>
