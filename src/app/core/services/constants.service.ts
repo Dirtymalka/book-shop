@@ -1,7 +1,12 @@
-import { Injectable } from '@angular/core';
+import {Injectable, InjectionToken} from '@angular/core';
 
-@Injectable()
+const sToken = new InjectionToken<string>('ConstantsService');
+
+@Injectable({
+  providedIn: 'root',
+
+})
 export class ConstantsService {
-  value: { App: 'TaskManager', Ver: '1.0' };
-  constructor() { }
+  constructor() {
+  }
 }

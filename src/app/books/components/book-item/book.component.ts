@@ -1,6 +1,5 @@
-import {ChangeDetectionStrategy, Component, EventEmitter, Input, NgModule, OnInit, Output} from '@angular/core';
-import {BookCategories, IBook} from '../../models/books/BookModel';
-import {DemoMaterialModule} from '../../../material-module';
+import {ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {IBook} from '../../models/books/BookModel';
 
 @Component({
   selector: 'app-book',

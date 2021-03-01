@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, DoCheck, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges} from '@angular/core';
+import {ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {ICartProduct} from '../../models/cart/CartProductModel';
 import {OrderByPipe} from '../../../shared/pipes/order-by.pipe';
 
@@ -9,7 +9,7 @@ import {OrderByPipe} from '../../../shared/pipes/order-by.pipe';
   providers: [OrderByPipe],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class CartListComponent implements OnInit, OnChanges {
+export class CartListComponent implements OnInit {
   @Input() cart: ICartProduct[];
   @Input() selected: string;
   @Input() descending: boolean;
@@ -23,9 +23,9 @@ export class CartListComponent implements OnInit, OnChanges {
   ngOnInit(): void {
   }
 
-  ngOnChanges(changes: SimpleChanges): void {
-    this.cart = this.orderByPipe.transform(this.cart, this.selected, this.descending);
-  }
+  // ngOnChanges(changes: SimpleChanges): void {
+  //   this.cart = this.orderByPipe.transform(this.cart, this.selected, this.descending);
+  // }
 
   increaseCount(bookId): void {
     this.increase.emit(bookId);

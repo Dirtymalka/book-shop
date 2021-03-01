@@ -1,7 +1,5 @@
 import {ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {IBook} from '../../../books/models/books/BookModel';
-import {CartService} from '../../services/cart.service';
-import {BackgroundDirective} from '../../directives/background.directive';
 
 @Component({
   selector: 'app-cart-item',
@@ -14,7 +12,6 @@ export class CartItemComponent implements OnInit {
   @Output() delete = new EventEmitter<string>();
   @Output() increase = new EventEmitter<string>();
   @Output() decrease = new EventEmitter<string>();
-  constructor(private cartService: CartService) { }
 
   ngOnInit(): void {
     console.log('asd');

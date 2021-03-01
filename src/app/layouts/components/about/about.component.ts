@@ -2,7 +2,7 @@ import {Component, OnInit, Optional} from '@angular/core';
 import {LocalStorageService} from '../../../core/services/local-storage.service';
 import {ConfigOptionsService} from '../../../core/services/config-options.service';
 import {ConstantsService} from '../../../core/services/constants.service';
-import {GeneratorFactory, GeneratorService} from '../../../core/services/generator.service';
+import {GeneratorService} from '../../../core/services/generator.service';
 
 @Component({
   selector: 'app-about',
@@ -13,32 +13,31 @@ import {GeneratorFactory, GeneratorService} from '../../../core/services/generat
     ConfigOptionsService,
     {
       provide: ConstantsService,
-      useValue: new ConstantsService().value
+      useValue: { App: 'TaskManager', Ver: '1.0' }
     },
-    // {
-    //   provide: GeneratorService,
-    //   useFactory: GeneratorFactory,
-    //   deps: [GeneratorService]
-    // }
+    {
+      provide: GeneratorService,
+      useFactory: () => {
+        return GeneratorService.getString(10);
+      },
+    }
   ]
 })
 export class AboutComponent implements OnInit {
    a: any;
    constant: any;
-   generate: string;
+   generate: GeneratorService;
   constructor(@Optional() private localStorageService: LocalStorageService,
               private configOptionsService: ConfigOptionsService,
               private constantsService: ConstantsService,
-              // private generatorService: GeneratorService
+              private generatorService: GeneratorService
               ) { }
 
   ngOnInit(): void {
     this.localStorageService.setItemToLocalStorage('a', 123);
     this.a = this.localStorageService.getItemFromLocalStorage('a');
-
-    this.constant = this.constantsService.value;
-
-    // this.generate = this.generatorService.getString(5);
+    this.constant = this.constantsService;
+    this.generate = this.generatorService;
   }
 
 }

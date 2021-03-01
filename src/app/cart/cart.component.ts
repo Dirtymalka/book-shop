@@ -9,7 +9,7 @@ import {ICartProduct} from './models/cart/CartProductModel';
 })
 export class CartComponent implements OnInit, DoCheck {
   totalQuantity = 0;
-  selected: string = 'name';
+  selected = 'name';
   descending = true;
   cart: ICartProduct[];
   totalPrice = 0;

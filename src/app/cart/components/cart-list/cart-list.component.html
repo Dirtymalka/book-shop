@@ -1,6 +1,6 @@
 <ul class="cart-list">
 
-  <li *ngFor="let book of cart">
+  <li *ngFor="let book of cart | orderBy:selected:descending; trackBy: trackByItems">
 
       <app-cart-item [book]="book"
                      (delete)="deleteBook($event)"

@@ -1,20 +1,14 @@
 import { Injectable } from '@angular/core';
 
-export const GeneratorFactory = (n, service: GeneratorService) => {
-  return service.getString(n);
-};
-
 @Injectable({
   providedIn: 'root',
-  useFactory: GeneratorFactory,
-  deps: [GeneratorService]
 })
 export class GeneratorService {
 
-  constructor(n: number) {
+  constructor() {
   }
 
-  getString(n): string {
+  static getString(n): string {
     let text = '';
     const possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
 
