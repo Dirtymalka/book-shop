@@ -1,6 +1,6 @@
 import {AfterViewInit, ChangeDetectionStrategy, Component, DoCheck, OnInit, ViewChild} from '@angular/core';
 import {CartService} from './cart/services/cart.service';
-import {AdminCheckService} from './core/services/admin-check.service';
+import {AdminCheckService} from './shared/services/admin-check.service';
 import {Router} from '@angular/router';
 
 @Component({

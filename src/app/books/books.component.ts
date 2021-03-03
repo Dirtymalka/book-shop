@@ -4,7 +4,7 @@ import {MatDialog} from '@angular/material/dialog';
 import {Router} from '@angular/router';
 import {BooksService} from './services/books-service.service';
 import {IBook} from './models/books/BookModel';
-import {AdminCheckService} from '../core/services/admin-check.service';
+import {AdminCheckService} from '../shared/services/admin-check.service';
 
 @Component({
   selector: 'app-books',

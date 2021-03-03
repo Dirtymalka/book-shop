@@ -19,31 +19,24 @@ import {AppRoutingModule} from './app-routing.module';
 import { BookModalComponent } from './common/components/book-modal/book-modal.component';
 import { EditBookComponent } from './common/components/edit-book/edit-book.component';
 import { AdminComponent } from './admin/admin.component';
+import {BooksModule} from './books/books.module';
+import {SharedModule} from './shared/shared.module';
+import {CartModule} from './cart/cart.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    BookComponent,
-    CartComponent,
-    CartItemComponent,
-    CartItemComponent,
-    BookListComponent,
-    CartListComponent,
-    BooksComponent,
     AboutComponent,
-    BackgroundDirective,
-    SizeBorderDirective,
-    OrderByPipe,
     BookModalComponent,
     EditBookComponent,
-    AdminComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    DemoMaterialModule,
     AppRoutingModule,
     FormsModule,
+    BooksModule,
+    SharedModule,
   ],
   bootstrap: [AppComponent]
 })

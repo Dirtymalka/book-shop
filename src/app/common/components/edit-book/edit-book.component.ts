@@ -2,7 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {IBook} from '../../../books/models/books/BookModel';
 import {ActivatedRoute, Router} from '@angular/router';
 import {BooksService} from '../../../books/services/books-service.service';
-import {EMPTY_BOOK} from '../../../shared/mock-books';
+import {EMPTY_BOOK} from '../../../shared/mockdata/mock-books';
 
 @Component({
   selector: 'app-edit-book',
