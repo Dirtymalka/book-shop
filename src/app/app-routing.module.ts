@@ -6,6 +6,7 @@ import {BookComponent} from './books/components/book-item/book.component';
 import {EditBookComponent} from './common/components/edit-book/edit-book.component';
 import {AdminComponent} from './admin/admin.component';
 import {CanActivateGuard} from './admin/can-activate.guard';
+import {CartModule} from './cart/cart.module';
 
 const routes: Routes = [
   {
@@ -19,12 +20,12 @@ const routes: Routes = [
   },
   {
     path: 'cart',
-    component: CartComponent
+    loadChildren: () => import('./cart/cart.module').then(m => m.CartModule)
   },
-  {
-    path: 'product/:id',
-    component: BookComponent
-  },
+  // {
+  //   path: 'product/:id',
+  //   component: BookComponent
+  // },
   {
     path: 'admin',
     canActivate: [CanActivateGuard],

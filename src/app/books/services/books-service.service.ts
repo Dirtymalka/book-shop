@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {BOOKS} from '../../shared/mock-books';
+import {BOOKS} from '../../shared/mockdata/mock-books';
 import {IBook} from '../models/books/BookModel';
 
 @Injectable({

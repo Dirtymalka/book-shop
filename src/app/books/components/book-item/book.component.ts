@@ -3,7 +3,7 @@ import {IBook} from '../../models/books/BookModel';
 import {ActivatedRoute, Router} from '@angular/router';
 import {BooksService} from '../../services/books-service.service';
 import {CartService} from '../../../cart/services/cart.service';
-import {AdminCheckService} from '../../../core/services/admin-check.service';
+import {AdminCheckService} from '../../../shared/services/admin-check.service';
 import {MatDialog} from '@angular/material/dialog';
 import {BookModalComponent} from '../../../common/components/book-modal/book-modal.component';
 

@@ -1,8 +1,8 @@
 import {Component, OnInit, Optional} from '@angular/core';
-import {LocalStorageService} from '../../../core/services/local-storage.service';
-import {ConfigOptionsService} from '../../../core/services/config-options.service';
-import {ConstantsService} from '../../../core/services/constants.service';
-import {GeneratorService} from '../../../core/services/generator.service';
+import {LocalStorageService} from '../../../shared/services/local-storage.service';
+import {ConfigOptionsService} from '../../../shared/services/config-options.service';
+import {ConstantsService} from '../../../shared/services/constants.service';
+import {GeneratorService} from '../../../shared/services/generator.service';
 
 @Component({
   selector: 'app-about',
