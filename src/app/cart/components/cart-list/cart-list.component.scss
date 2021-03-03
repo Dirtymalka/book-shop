@@ -1,1 +1,10 @@
 
+ul {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+ul > li {
+  flex: 1 1 20%;
+}

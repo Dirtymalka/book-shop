@@ -1,3 +1,5 @@
 <div class="books">
-  <app-book-list></app-book-list>
+  <h2 class="books_title">{{'Books list' | titlecase}}</h2>
+  <button *ngIf="isAdmin" (click)="createMode()" mat-button>Add Book</button>
+  <app-book-list [isAdmin]="isAdmin" [books]="books"></app-book-list>
 </div>

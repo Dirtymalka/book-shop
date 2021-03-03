@@ -14,7 +14,6 @@ export class CartItemComponent implements OnInit {
   @Output() decrease = new EventEmitter<string>();
 
   ngOnInit(): void {
-    console.log('asd');
   }
 
   addBook(): void {

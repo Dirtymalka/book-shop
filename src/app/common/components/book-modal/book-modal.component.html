@@ -1,0 +1,38 @@
+<h1 mat-dialog-title>{{data.name}}</h1>
+<div mat-dialog-content>
+  <p>Заполните поля</p>
+  <mat-form-field>
+    <mat-label>Name Book</mat-label>
+    <label>
+      <input matInput [(ngModel)]="data.name">
+    </label>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Description Book</mat-label>
+    <label>
+      <textarea matInput [(ngModel)]="data.description"></textarea>
+    </label>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Author Book</mat-label>
+    <label>
+      <input matInput [(ngModel)]="data.author">
+    </label>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Category Book</mat-label>
+    <label>
+      <input matInput [(ngModel)]="data.category">
+    </label>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Price Book</mat-label>
+    <label>
+      <input matInput [(ngModel)]="data.price">
+    </label>
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Cancel</button>
+  <button mat-button [mat-dialog-close]="data" cdkFocusInitial>Ok</button>
+</div>

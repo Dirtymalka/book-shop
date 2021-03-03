@@ -41,4 +41,8 @@ export class CartComponent implements OnInit, DoCheck {
     this.cartService.removeBook(bookId);
     this.cart = this.cartService.getBooksFromCart();
   }
+
+  clearCaart(): void {
+    this.cartService.clearCart();
+  }
 }

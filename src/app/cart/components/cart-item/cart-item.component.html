@@ -1,10 +1,15 @@
 <mat-card appBackground>
-  <div class="book-image">
+  <div class="book-card">
+    <div class="book-image">
+      <img [src]="book.imgUrl" alt="">
+    </div>
+    <div class="book-content">
+      <a [routerLink]="['/product', book.id]">
+        <mat-card-title class="book-title">{{ book.name }}</mat-card-title>
+      </a>
+      <mat-card-content class="book-price">{{ book.price | currency}}</mat-card-content>
+    </div>
   </div>
-  <div class="book-content">
-    <span class="book-title">{{ book.name }}</span>
-  </div>
-  <span class="book-price">{{ book.price | currency}}</span>
   <div class="book-count">
     <button mat-mini-fab color="accent" (click)="removeBook()">
       <mat-icon>remove</mat-icon>
@@ -13,7 +18,7 @@
     <button mat-mini-fab color="accent" (click)="addBook()">
       <mat-icon>add</mat-icon>
     </button>
-    <button mat-mini-fab color="primary" (click)="deleteBook()">
+    <button class="delete" mat-mini-fab color="primary" (click)="deleteBook()">
       <mat-icon>delete</mat-icon>
     </button>
   </div>
