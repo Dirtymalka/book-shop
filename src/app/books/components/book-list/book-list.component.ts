@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {BooksService} from '../../services/books-service.service';
 import {IBook} from '../../models/books/BookModel';
 import {CartService} from '../../../cart/services/cart.service';
@@ -9,7 +9,8 @@ import {CartService} from '../../../cart/services/cart.service';
   styleUrls: ['./book-list.component.scss']
 })
 export class BookListComponent implements OnInit {
-  books: IBook[] | [];
+  @Input() books: Promise<IBook[]>;
+  @Input() isAdmin: boolean;
 
   constructor(private booksService: BooksService, private cartService: CartService) { }
 

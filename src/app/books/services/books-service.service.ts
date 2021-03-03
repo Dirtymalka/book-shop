@@ -12,7 +12,29 @@ export class BooksService {
     this.books = BOOKS;
   }
 
-  getBooks(): IBook[] {
-    return this.books;
+  getBookById(id): IBook {
+    return this.books.find((book: IBook) => book.id === id);
+  }
+
+  getBooks(): Promise<IBook[]> {
+    return new Promise((resolve) => {
+      resolve(this.books);
+    });
+  }
+
+  updateBook(updatingBook: IBook): void {
+    const index = this.books.findIndex((book: IBook) => book.id === updatingBook.id);
+    if (index < 0) {
+      this.books = [
+        ...this.books,
+        updatingBook
+      ];
+      return;
+    }
+    this.books = [
+      ...this.books.slice(0, index),
+      updatingBook,
+      ...this.books.slice(index + 1)
+    ];
   }
 }

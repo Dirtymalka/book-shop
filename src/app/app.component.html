@@ -1,13 +1,31 @@
-<mat-card class="wrapper">
-  <mat-card-header class="header">
-    <mat-card-title class="title" #title></mat-card-title>
-  </mat-card-header>
+<div>
+  <mat-toolbar>
+    <div class="header">
+      <a [routerLink]="'/'"><h1 #title></h1></a>
+      <ul class="navigation">
+        <li class="books-list-item" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{exact: true}" >
+          <a [routerLink]="'/admin/products'"  >Admin Page</a>
+        </li>
+        <li class="books-list-item" [routerLinkActive]="'active'" >
+          <a [routerLink]="'/products-list'" >Books</a>
+        </li>
+        <li class="books-list-item cart" [routerLinkActive]="'active'" >
+          <a routerLink="/cart">
+          <span [matBadge]="totalQuantity | number" matBadgeOverlap="false">
+            <mat-icon>shopping_cart</mat-icon>
+          </span>
+          </a>
+        </li>
+        <li>
+          <mat-slide-toggle (change)="togglePermissions()" [checked]="isAdmin">Is Admin!</mat-slide-toggle>
+        </li>
+      </ul>
+    </div>
+  </mat-toolbar>
+</div>
 
-  <div class="container">
-    <app-books [ngClass]="'books'" ></app-books>
-    <app-cart [className]="'cart'" ></app-cart>
-  </div>
-  <app-about></app-about>
+<mat-card class="wrapper">
+  <router-outlet></router-outlet>
 </mat-card>
 
 

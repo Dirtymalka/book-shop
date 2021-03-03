@@ -15,6 +15,10 @@ import { AboutComponent } from './layouts/components/about/about.component';
 import { BackgroundDirective } from './cart/directives/background.directive';
 import { SizeBorderDirective } from './shared/directives/size-border.directive';
 import { OrderByPipe } from './shared/pipes/order-by.pipe';
+import {AppRoutingModule} from './app-routing.module';
+import { BookModalComponent } from './common/components/book-modal/book-modal.component';
+import { EditBookComponent } from './common/components/edit-book/edit-book.component';
+import { AdminComponent } from './admin/admin.component';
 
 @NgModule({
   declarations: [
@@ -29,14 +33,16 @@ import { OrderByPipe } from './shared/pipes/order-by.pipe';
     AboutComponent,
     BackgroundDirective,
     SizeBorderDirective,
-    OrderByPipe
+    OrderByPipe,
+    BookModalComponent,
+    EditBookComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     DemoMaterialModule,
-    // MatNativeDateModule,
-    // MatButtonModule,
+    AppRoutingModule,
     FormsModule,
   ],
   bootstrap: [AppComponent]

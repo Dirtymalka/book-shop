@@ -1,8 +1,5 @@
-<h2 class="books_title">{{'Books list' | titlecase}}</h2>
 <ul>
-  <li *ngFor="let book of books">
-    <mat-card [appSizeBorder]="'red'">
-      <app-book [book]="book" (addBook)="updateCart($event)" ></app-book>
-    </mat-card>
+  <li *ngFor="let book of books | async">
+      <app-book [isAdmin]="isAdmin" [bookId]="book.id" [book]="book" (addBook)="updateCart($event)" ></app-book>
   </li>
 </ul>

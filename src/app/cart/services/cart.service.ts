@@ -86,4 +86,9 @@ export class CartService {
     // @ts-ignore
     this.totalQuantity = this.cartProducts.reduce((total: number, book: ICartProduct) => total + book.count, 0).toFixed(2);
   }
+
+  clearCart(): void {
+    this.cartProducts = [];
+    this.updateCartData();
+  }
 }
