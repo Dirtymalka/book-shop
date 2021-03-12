@@ -17,7 +17,7 @@ export class CanActivateGuard implements CanActivate {
     if (this.adminCheckService.isAdmin) {
       return true;
     } else {
-      this.router.navigate(['/products-list'], {queryParams: {isAdmin: false}});
+      // this.router.navigate(['/products-list'], {queryParams: {isAdmin: false}});
     }
   }
 }

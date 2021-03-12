@@ -20,7 +20,7 @@
         </button>
       </div>
     </div>
-    <button mat-raised-button color="warn" (click)="clearCaart()">Clear Cart</button>
+    <button mat-raised-button color="warn" (click)="clearCart()">Clear Cart</button>
   </div>
 
 
@@ -30,14 +30,20 @@
                  [cart]="cart"
                  [selected]="selected"
                  [descending]="descending"
-                 *ngIf="totalQuantity>0; else empty"></app-cart-list>
+                 *ngIf="totalQuantity>0; else empty">
+
+  </app-cart-list>
 
   <ng-template #empty>
     <div>Empty cart</div>
   </ng-template>
-  <div class="total">
-    <h2>Total: {{totalPrice | currency}}</h2>
+  <div class="cart-footer">
+    <div class="total">
+      <h2>Total: {{totalPrice | currency}}</h2>
+    </div>
+    <button mat-raised-button (click)="confirmOrder()">Checkout</button>
   </div>
+
 </div>
 </div>
 

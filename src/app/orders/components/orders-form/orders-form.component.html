@@ -1,0 +1,45 @@
+<form [formGroup]="form" (ngSubmit)="submit()">
+  <mat-form-field>
+    <mat-label>Name</mat-label>
+    <label>
+      <input formControlName="name" matInput >
+    </label>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>E-mail</mat-label>
+    <label>
+      <input formControlName="eMail" matInput >
+    </label>
+  </mat-form-field>
+  <div formGroupName="address" class="user-address">
+    <mat-form-field>
+      <mat-label>City</mat-label>
+      <label>
+        <input formControlName="city" matInput >
+      </label>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Street</mat-label>
+      <label>
+        <input formControlName="street" matInput >
+      </label>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>House</mat-label>
+      <label>
+        <input formControlName="house" matInput >
+      </label>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Apartment</mat-label>
+      <label>
+        <input formControlName="apartment" matInput >
+      </label>
+    </mat-form-field>
+  </div>
+
+  <div class="actions">
+<!--    <button type="button" mat-button (click)="cancel()">Cancel</button>-->
+    <button type="submit" mat-button>Confirm Order</button>
+  </div>
+</form>

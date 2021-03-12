@@ -7,7 +7,7 @@ import {BookComponent} from './books/components/book-item/book.component';
 import {CartItemComponent} from './cart/components/cart-item/cart-item.component';
 import {BookListComponent} from './books/components/book-list/book-list.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {CartComponent} from './cart/cart.component';
 import {CartListComponent} from './cart/components/cart-list/cart-list.component';
 import { BooksComponent } from './books/books.component';
@@ -37,6 +37,7 @@ import {CartModule} from './cart/cart.module';
     FormsModule,
     BooksModule,
     SharedModule,
+    ReactiveFormsModule,
   ],
   bootstrap: [AppComponent]
 })

@@ -20,6 +20,7 @@ export class BookComponent implements OnInit {
   @Input() isAdmin: boolean;
   @Input() bookId: string;
   book: IBook;
+  cardWidth: string;
 
   constructor(
     private router: Router,
@@ -36,6 +37,7 @@ export class BookComponent implements OnInit {
       if (params.id !== undefined) {
         this.bookId = params.id;
         this.productCard = true;
+        this.cardWidth = '100%';
       }
       this.book = this.booksService.getBookById(this.bookId);
     });
