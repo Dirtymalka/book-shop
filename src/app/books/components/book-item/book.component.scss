@@ -41,6 +41,7 @@
   flex-direction: row;
   min-height: 340px;
   justify-content: flex-start;
+  width: 380px;
 }
 
 .book-description-small {
@@ -63,5 +64,10 @@
 .mat-card {
   background: #ffffff;
   color: black;
+}
+
+small {
+  font-weight: bold;
+  color: #464646b0;
 }
 

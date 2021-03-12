@@ -22,6 +22,10 @@ const routes: Routes = [
     path: 'cart',
     loadChildren: () => import('./cart/cart.module').then(m => m.CartModule)
   },
+  {
+    path: 'order',
+    loadChildren: () => import('./orders/order.module').then(m => m.OrderModule)
+  },
   // {
   //   path: 'product/:id',
   //   component: BookComponent

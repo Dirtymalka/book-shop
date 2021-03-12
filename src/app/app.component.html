@@ -9,6 +9,9 @@
         <li class="books-list-item" [routerLinkActive]="'active'" >
           <a [routerLink]="'/products-list'" >Books</a>
         </li>
+        <li class="books-list-item" [routerLinkActive]="'active'" >
+          <a [routerLink]="'/order'" >Orders</a>
+        </li>
         <li class="books-list-item cart" [routerLinkActive]="'active'" >
           <a routerLink="/cart">
           <span [matBadge]="totalQuantity | number" matBadgeOverlap="false">

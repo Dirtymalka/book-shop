@@ -1,6 +1,9 @@
 import {Component, DoCheck, OnInit} from '@angular/core';
 import {CartService} from './services/cart.service';
 import {ICartProduct} from './models/cart/CartProductModel';
+import {OrderService} from '../orders/services/order.service';
+import {Router} from '@angular/router';
+import {query} from '@angular/animations';
 
 @Component({
   selector: 'app-cart',
@@ -13,7 +16,7 @@ export class CartComponent implements OnInit, DoCheck {
   descending = true;
   cart: ICartProduct[];
   totalPrice = 0;
-  constructor(private  cartService: CartService) { }
+  constructor(private  cartService: CartService, private orderService: OrderService, private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -42,7 +45,13 @@ export class CartComponent implements OnInit, DoCheck {
     this.cart = this.cartService.getBooksFromCart();
   }
 
-  clearCaart(): void {
+  clearCart(): void {
     this.cartService.clearCart();
+  }
+
+  confirmOrder(): void {
+    this.orderService.postOrders(this.cart);
+    this.cartService.clearCart();
+    this.router.navigate(['/order'], {queryParams: {totalPrice: this.totalPrice}});
   }
 }

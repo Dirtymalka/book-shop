@@ -1,8 +1,9 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {IBook} from '../../../books/models/books/BookModel';
+import {BookCategories, IBook} from '../../../books/models/books/BookModel';
 import {ActivatedRoute, Router} from '@angular/router';
 import {BooksService} from '../../../books/services/books-service.service';
 import {EMPTY_BOOK} from '../../../shared/mockdata/mock-books';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-edit-book',
@@ -11,6 +12,8 @@ import {EMPTY_BOOK} from '../../../shared/mockdata/mock-books';
 })
 export class EditBookComponent implements OnInit {
   @Input() book: IBook;
+  form: FormGroup;
+  options = Object.values(BookCategories);
 
   constructor(private route: ActivatedRoute, private booksService: BooksService, private router: Router) { }
 
@@ -23,13 +26,27 @@ export class EditBookComponent implements OnInit {
       }
       this.book = EMPTY_BOOK;
     });
+
+    this.form = new FormGroup({
+      name: new FormControl('', [Validators.required, Validators.minLength(2)]),
+      description: new FormControl('', [Validators.required, Validators.minLength(2)]),
+      author: new FormControl('', [Validators.required]),
+      category: new FormControl(this.book.category || '', [Validators.required]),
+      price: new FormControl('', [Validators.required]),
+      imgUrl: new FormControl('')
+    });
   }
 
-  accept(): void {
-    this.booksService.updateBook(this.book);
-    this.router.navigate(['/admin/products']);
-  }
+  // accept(): void {
+  //   this.booksService.updateBook(this.book);
+  //   this.router.navigate(['/admin/products']);
+  // }
   cancel(): void {
     this.router.navigate(['/admin/products']);
+  }
+
+  submit(): void {
+    console.log(this.options);
+    console.log(this.form);
   }
 }

@@ -1,37 +1,47 @@
 <div class="edit-container">
 <p>Заполните поля</p>
-<mat-form-field>
-  <mat-label>Name Book</mat-label>
-  <label>
-    <input matInput [(ngModel)]="book.name">
-  </label>
-</mat-form-field>
-<mat-form-field>
-  <mat-label>Description Book</mat-label>
-  <label>
-    <textarea matInput [(ngModel)]="book.description"></textarea>
-  </label>
-</mat-form-field>
-<mat-form-field>
-  <mat-label>Author Book</mat-label>
-  <label>
-    <input matInput [(ngModel)]="book.author">
-  </label>
-</mat-form-field>
-<mat-form-field>
-  <mat-label>Category Book</mat-label>
-  <label>
-    <input matInput [(ngModel)]="book.category">
-  </label>
-</mat-form-field>
-<mat-form-field>
-  <mat-label>Price Book</mat-label>
-  <label>
-    <input matInput [(ngModel)]="book.price">
-  </label>
-</mat-form-field>
-  <div class="actions">
-    <button mat-button (click)="cancel()">Cancel</button>
-    <button mat-button (click)="accept()">Ok</button>
-  </div>
+  <form [formGroup]="form" (ngSubmit)="submit()">
+    <mat-form-field>
+      <mat-label>Name Book</mat-label>
+      <label>
+        <input formControlName="name" matInput [(ngModel)]="book.name">
+      </label>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Description Book</mat-label>
+      <label>
+        <textarea formControlName="description" matInput [(ngModel)]="book.description"></textarea>
+      </label>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Author Book</mat-label>
+      <label>
+        <input formControlName="author" matInput [(ngModel)]="book.author">
+      </label>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Category Book</mat-label>
+      <mat-select formControlName="category" >
+        <mat-option *ngFor="let option of options" [value]="option">{{option}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Price Book</mat-label>
+      <label>
+        <input formControlName="price" matInput [(ngModel)]="book.price">
+      </label>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Image URL Book</mat-label>
+      <label>
+        <input formControlName="imgUrl" matInput [(ngModel)]="book.imgUrl">
+      </label>
+    </mat-form-field>
+    <div class="actions">
+      <button type="button" mat-button (click)="cancel()">Cancel</button>
+      <button type="submit" mat-button>Ok</button>
+    </div>
+  </form>
+
+
 </div>
