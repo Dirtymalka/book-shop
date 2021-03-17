@@ -1,5 +1,23 @@
-<ul>
-  <li *ngFor="let book of books$ | async">
-      <app-book [isAdmin]="isAdmin" [bookId]="book.id" [book]="book" (delete)="deleteBook($event)" ></app-book>
-  </li>
-</ul>
+<ng-container *ngIf="books$ | async as books; else empty">
+  <ul>
+    <li *ngFor="let book of books">
+      <app-book
+        [isAdmin]="isAdmin"
+        [bookId]="book.id"
+        [book]="book"
+        (delete)="deleteBook($event)"
+      ></app-book>
+    </li>
+  </ul>
+</ng-container>
+<ng-template #empty>
+  <div class="container">
+    <div class="loader">
+      <div class="loader__items">
+        <span class="loader__item"></span>
+        <span class="loader__item"></span>
+        <span class="loader__item"></span>
+      </div>
+    </div>
+  </div>
+</ng-template>

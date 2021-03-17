@@ -1,8 +1,16 @@
-import {Component, DoCheck, EventEmitter, Input, OnChanges, OnInit, Output} from '@angular/core';
-import {IBook} from '../../models/books/BookModel';
-import {ActivatedRoute, Router} from '@angular/router';
-import {BooksService} from '../../services/books-service.service';
-import {CartService} from '../../../cart/services/cart.service';
+import {
+  Component,
+  DoCheck,
+  EventEmitter,
+  Input,
+  OnChanges,
+  OnInit,
+  Output,
+} from '@angular/core';
+import { IBook } from '../../models/books/BookModel';
+import { ActivatedRoute, Router } from '@angular/router';
+import { BooksService } from '../../services/books-service.service';
+import { CartService } from '../../../cart/services/cart.service';
 // import {AdminCheckService} from '../../../shared/services/admin-check.service';
 // import {MatDialog} from '@angular/material/dialog';
 // import {BookModalComponent} from '../../../common/components/book-modal/book-modal.component';
@@ -14,37 +22,28 @@ import {CartService} from '../../../cart/services/cart.service';
   styleUrls: ['./book.component.scss'],
 })
 export class BookComponent implements OnInit {
-  book: IBook;
   productCard = false;
   cardWidth: string;
   loading: boolean;
+  bookId: string;
   @Input() isAdmin: boolean;
-  @Input() bookId: string;
+  @Input() book: IBook;
   @Output() delete = new EventEmitter<string>();
-
 
   constructor(
     private router: Router,
     private booksService: BooksService,
     private cartService: CartService,
-    private route: ActivatedRoute,
-  ) {
-  }
+    private route: ActivatedRoute
+  ) {}
 
   ngOnInit(): void {
-    this.loading = true;
     this.route.params.subscribe((params) => {
       if (params.id !== undefined) {
         this.bookId = params.id;
         this.productCard = true;
         this.cardWidth = '100%';
       }
-    });
-    this.booksService.getBookById(this.bookId).subscribe(book => {
-      console.log(book);
-      this.book = book;
-      this.bookId = this.book.id;
-      this.loading = false;
     });
   }
 

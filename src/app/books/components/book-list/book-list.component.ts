@@ -1,20 +1,23 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {BooksService} from '../../services/books-service.service';
-import {IBook} from '../../models/books/BookModel';
-import {CartService} from '../../../cart/services/cart.service';
-import {Observable} from 'rxjs';
+import { Component, Input, OnInit } from '@angular/core';
+import { BooksService } from '../../services/books-service.service';
+import { IBook } from '../../models/books/BookModel';
+import { CartService } from '../../../cart/services/cart.service';
+import { Observable, of } from 'rxjs';
 
 @Component({
   selector: 'app-book-list',
   templateUrl: './book-list.component.html',
-  styleUrls: ['./book-list.component.scss']
+  styleUrls: ['./book-list.component.scss'],
 })
 export class BookListComponent implements OnInit {
-  books$: Observable<IBook[]>;
+  books$: Observable<IBook[]> = of([]);
   // @Input() books: IBook[];
   @Input() isAdmin: boolean;
 
-  constructor(private booksService: BooksService, private cartService: CartService) { }
+  constructor(
+    private booksService: BooksService,
+    private cartService: CartService
+  ) {}
 
   ngOnInit(): void {
     this.books$ = this.booksService.getBooks();
@@ -33,5 +36,4 @@ export class BookListComponent implements OnInit {
     this.booksService.deleteBook(id);
     this.books$ = this.booksService.getBooks();
   }
-
 }
