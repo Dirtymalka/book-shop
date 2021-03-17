@@ -5,7 +5,7 @@ import {IBook} from '../../../books/models/books/BookModel';
   selector: 'app-cart-item',
   templateUrl: './cart-item.component.html',
   styleUrls: ['./cart-item.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  // changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CartItemComponent implements OnInit {
   @Input() book: IBook;

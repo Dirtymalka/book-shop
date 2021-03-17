@@ -1,10 +1,11 @@
-import {ChangeDetectorRef, Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {BookModalComponent} from '../common/components/book-modal/book-modal.component';
 import {MatDialog} from '@angular/material/dialog';
 import {Router} from '@angular/router';
 import {BooksService} from './services/books-service.service';
 import {IBook} from './models/books/BookModel';
 import {AdminCheckService} from '../shared/services/admin-check.service';
+import {Observable} from 'rxjs';
 
 @Component({
   selector: 'app-books',
@@ -12,17 +13,18 @@ import {AdminCheckService} from '../shared/services/admin-check.service';
   styleUrls: ['./books.component.scss']
 })
 export class BooksComponent implements OnInit {
-  books: Promise<IBook[]>;
+  books$: Observable<IBook[]>;
+  loading = false;
   @Input() isAdmin: boolean;
 
   constructor(private router: Router,
-              private cdr: ChangeDetectorRef,
+              // private cdr: ChangeDetectorRef,
               private booksService: BooksService,
               private adminCheckService: AdminCheckService,
               public dialog: MatDialog) { }
 
   ngOnInit(): void {
-    this.books = this.booksService.getBooks();
+    // this.books$ = this.booksService.getBooks();
     // this.isAdmin = this.adminCheckService.isAdmin;
   }
 

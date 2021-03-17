@@ -1,39 +1,49 @@
 <mat-card [appSizeBorder]="'red'">
-<div class="book-card" [ngStyle]="{width: cardWidth}">
-  <div class="book-image">
-    <img [src]="book.imgUrl" alt="">
-  </div>
-  <div class="book-content">
-    <div class="main-content">
-      <a [routerLink]="['/product', book.id]">
-        <mat-card-title class="book-title">{{ book.name }}</mat-card-title>
-      </a>
-      <small>{{book.author}}</small>
-      <mat-card-content [class]="productCard ? 'book-description' : 'book-description-small'">{{ book.description}}</mat-card-content>
-      <mat-card-content class="book-price">{{ book.price | currency}}</mat-card-content>
-      <div class="book-actions">
-        <button
-          *ngIf="!isAdmin; else edit"
-          mat-raised-button color="accent"
-          [disabled]="!book.isAvailable"
-          (click)="onBuy()"
-        >
-          Buy
-        </button>
-      </div>
+  <div *ngIf="!loading;else empty" class="book-card" [ngStyle]="{width: cardWidth}">
+    <div class="book-image">
+      <img [src]="book.imgUrl" alt="">
     </div>
-    <ng-template #edit>
-      <div *ngIf="isAdmin" class="admin-options">
-        <button
-          mat-raised-button color="accent"
-          (click)="editMode()"
-        >
-          Edit
-        </button>
+    <div class="book-content">
+      <div class="main-content">
+        <a [routerLink]="['/product', book.id]">
+          <mat-card-title class="book-title">{{ book.name }}</mat-card-title>
+        </a>
+        <small>{{book.author}}</small>
+        <mat-card-content
+          [class]="productCard ? 'book-description' : 'book-description-small'">{{ book.description}}</mat-card-content>
+        <mat-card-content class="book-price">{{ book.price | currency}}</mat-card-content>
+        <div class="book-actions">
+          <button
+            *ngIf="!isAdmin; else edit"
+            mat-raised-button color="accent"
+            [disabled]="!book.isAvailable"
+            (click)="onBuy()"
+          >
+            Buy
+          </button>
+        </div>
       </div>
-    </ng-template>
+      <ng-template #edit>
+        <div *ngIf="isAdmin" class="admin-options">
+          <button
+            mat-raised-button color="accent"
+            (click)="editMode()"
+          >
+            Edit
+          </button>
+          <button
+            mat-raised-button color="alarm"
+            (click)="deleteBook()"
+          >
+            Delete
+          </button>
+        </div>
+      </ng-template>
 
+    </div>
   </div>
-</div>
+  <ng-template #empty>
+    <div>Loading...</div>
+  </ng-template>
 </mat-card>
 

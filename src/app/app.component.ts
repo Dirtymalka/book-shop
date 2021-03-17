@@ -2,6 +2,7 @@ import {AfterViewInit, ChangeDetectionStrategy, Component, DoCheck, OnInit, View
 import {CartService} from './cart/services/cart.service';
 import {AdminCheckService} from './shared/services/admin-check.service';
 import {Router} from '@angular/router';
+import {HttpClient} from '@angular/common/http';
 
 @Component({
   selector: 'app-root',
@@ -13,7 +14,8 @@ export class AppComponent  implements OnInit, AfterViewInit, DoCheck{
   @ViewChild('title', {static: true}) title;
   totalQuantity = 0;
   isAdmin = false;
-  constructor(private  cartService: CartService, private adminCheckService: AdminCheckService, private router: Router) {
+  // tslint:disable-next-line:max-line-length
+  constructor(private  cartService: CartService, private adminCheckService: AdminCheckService, private router: Router, private http: HttpClient) {
   }
   ngOnInit(): void {
     if (this.isAdmin) {
@@ -38,4 +40,5 @@ export class AppComponent  implements OnInit, AfterViewInit, DoCheck{
     }
     this.router.navigate(['/']);
   }
+
 }

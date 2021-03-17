@@ -5,6 +5,7 @@ import {BookComponent} from './components/book-item/book.component';
 import {AdminComponent} from '../admin/admin.component';
 import {SharedModule} from '../shared/shared.module';
 import {RouterModule} from '@angular/router';
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import {RouterModule} from '@angular/router';
   ],
   imports: [
     SharedModule,
+    HttpClientModule,
     RouterModule.forChild([
       {
         path: 'product/:id',

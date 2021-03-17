@@ -11,7 +11,7 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
   styleUrls: ['./edit-book.component.scss']
 })
 export class EditBookComponent implements OnInit {
-  @Input() book: IBook;
+  @Input() book: IBook = EMPTY_BOOK;
   form: FormGroup;
   options = Object.values(BookCategories);
 
@@ -21,7 +21,12 @@ export class EditBookComponent implements OnInit {
     this.route.params.subscribe((params) => {
       if (params.id !== undefined && params.id !== 'add') {
         const bookId = params.id;
-        this.book = this.booksService.getBookById(bookId);
+        // this.booksService.getBookById(bookId).subscribe(book => this.book = book);
+        this.booksService.getBookById(bookId).subscribe(book => {
+          console.log(book);
+          this.book = {...book};
+          // this.cdr.detectChanges();
+        });
         return;
       }
       this.book = EMPTY_BOOK;
@@ -46,7 +51,11 @@ export class EditBookComponent implements OnInit {
   }
 
   submit(): void {
-    console.log(this.options);
-    console.log(this.form);
+    if (this.book.id === '') {
+      this.booksService.createBook(this.book);
+    } else {
+      this.booksService.updateBook(this.book);
+    }
+    this.router.navigate(['/admin/products']);
   }
 }

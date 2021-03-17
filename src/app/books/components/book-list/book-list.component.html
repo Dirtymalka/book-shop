@@ -1,5 +1,5 @@
 <ul>
-  <li *ngFor="let book of books | async">
-      <app-book [isAdmin]="isAdmin" [bookId]="book.id" [book]="book" (addBook)="updateCart($event)" ></app-book>
+  <li *ngFor="let book of books$ | async">
+      <app-book [isAdmin]="isAdmin" [bookId]="book.id" [book]="book" (delete)="deleteBook($event)" ></app-book>
   </li>
 </ul>

@@ -7,7 +7,7 @@ import {OrderByPipe} from '../../../shared/pipes/order-by.pipe';
   templateUrl: './cart-list.component.html',
   styleUrls: ['./cart-list.component.scss'],
   providers: [OrderByPipe],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  // changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CartListComponent implements OnInit {
   @Input() cart: ICartProduct[];

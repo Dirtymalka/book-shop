@@ -1,47 +1,51 @@
-import {ChangeDetectionStrategy, ChangeDetectorRef, Component, DoCheck, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, DoCheck, EventEmitter, Input, OnChanges, OnInit, Output} from '@angular/core';
 import {IBook} from '../../models/books/BookModel';
 import {ActivatedRoute, Router} from '@angular/router';
 import {BooksService} from '../../services/books-service.service';
 import {CartService} from '../../../cart/services/cart.service';
-import {AdminCheckService} from '../../../shared/services/admin-check.service';
-import {MatDialog} from '@angular/material/dialog';
-import {BookModalComponent} from '../../../common/components/book-modal/book-modal.component';
+// import {AdminCheckService} from '../../../shared/services/admin-check.service';
+// import {MatDialog} from '@angular/material/dialog';
+// import {BookModalComponent} from '../../../common/components/book-modal/book-modal.component';
+// import {Observable} from 'rxjs';
 
 @Component({
   selector: 'app-book',
   templateUrl: './book.component.html',
   styleUrls: ['./book.component.scss'],
-  // changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class BookComponent implements OnInit {
-  // @Input() book: IBook;
-  // @Output() addBook = new EventEmitter<IBook>();
+  book: IBook;
   productCard = false;
+  cardWidth: string;
+  loading: boolean;
   @Input() isAdmin: boolean;
   @Input() bookId: string;
-  book: IBook;
-  cardWidth: string;
+  @Output() delete = new EventEmitter<string>();
+
 
   constructor(
     private router: Router,
     private booksService: BooksService,
     private cartService: CartService,
     private route: ActivatedRoute,
-    private adminCheckService: AdminCheckService,
-    public dialog: MatDialog,
-    private cdr: ChangeDetectorRef) {
+  ) {
   }
 
   ngOnInit(): void {
+    this.loading = true;
     this.route.params.subscribe((params) => {
       if (params.id !== undefined) {
         this.bookId = params.id;
         this.productCard = true;
         this.cardWidth = '100%';
       }
-      this.book = this.booksService.getBookById(this.bookId);
     });
-    // this.isAdmin = this.adminCheckService.isAdmin;
+    this.booksService.getBookById(this.bookId).subscribe(book => {
+      console.log(book);
+      this.book = book;
+      this.bookId = this.book.id;
+      this.loading = false;
+    });
   }
 
   // при использовании модального окна редактирования была проблема с перерендером
@@ -72,7 +76,7 @@ export class BookComponent implements OnInit {
   // }
 
   editMode(): void {
-    this.router.navigate(['/admin/product/edit', this.bookId]);
+    this.router.navigate(['/admin/product/edit', this.book.id]);
     // this.openDialog();
   }
 
@@ -80,4 +84,7 @@ export class BookComponent implements OnInit {
     this.cartService.addBook(this.book);
   }
 
+  deleteBook(): void {
+    this.delete.emit(this.book.id);
+  }
 }

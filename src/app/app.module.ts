@@ -22,6 +22,7 @@ import { AdminComponent } from './admin/admin.component';
 import {BooksModule} from './books/books.module';
 import {SharedModule} from './shared/shared.module';
 import {CartModule} from './cart/cart.module';
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import {CartModule} from './cart/cart.module';
     BooksModule,
     SharedModule,
     ReactiveFormsModule,
+    // HttpClientModule
   ],
   bootstrap: [AppComponent]
 })
